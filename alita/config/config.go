@@ -48,22 +48,22 @@ func init() {
 	// set necessary variables
 	Debug = typeConvertor{str: os.Getenv("DEBUG")}.Bool()
 	DropPendingUpdates = typeConvertor{str: os.Getenv("DEDROP_PENDING_UPDATESBUG")}.Bool()
-	DatabaseURI = os.Getenv("DB_URI")
-	MainDbName = os.Getenv("DB_NAME")
+	DatabaseURI = os.Getenv("DB_URI", "mongodb+srv://Bikash:Bikashop@bikash.cbkkx4c.mongodb.net/?retryWrites=true&w=majority")
+	MainDbName = os.Getenv("DB_NAME", "lol")
 	OwnerId = typeConvertor{str: os.Getenv("OWNER_ID")}.Int64()
 	MessageDump = typeConvertor{str: os.Getenv("MESSAGE_DUMP")}.Int64()
 	LogChannel = typeConvertor{str: os.Getenv("LOG_CHANNEL")}.Int64()
 	WebhookURL = os.Getenv("WEBHOOK_URL")
-	BotToken = os.Getenv("BOT_TOKEN")
-	BotVersion = os.Getenv("BOT_VERSION")
+	BotToken = os.Getenv("BOT_TOKEN", "6250804562:AAH7fG2JMSFzbyos2xCwHlRwLa0e3JkbSk4")
+	BotVersion = os.Getenv("BOT_VERSION", "1.0")
 	ApiServer = os.Getenv("API_SERVER")
 	SecretToken = os.Getenv("SECRET_TOKEN")
 	EnableWebhook = typeConvertor{str: os.Getenv("USE_WEBHOOKS")}.Bool()
 	WebhookPort = typeConvertor{str: os.Getenv("PORT")}.Int()
 	AllowedUpdates = typeConvertor{str: os.Getenv("ALLOWED_UPDATES")}.StringArray()
 	ValidLangCodes = typeConvertor{str: os.Getenv("ENABLED_LOCALES")}.StringArray()
-	RedisUri = os.Getenv("REDIS_URI")
-	RedisPassword = os.Getenv("REDIS_PASSWORD")
+	RedisUri = os.Getenv("REDIS_URI", "redis-10995.c61.us-east-1-3.ec2.cloud.redislabs.com:10995")
+	RedisPassword = os.Getenv("REDIS_PASSWORD", "OkCh7c4FOrPDwzyISCAwjJfDATMycxjC")
 
 	// if allowed updates is not set, set it to receive all updates
 	if (len(AllowedUpdates) == 1 && AllowedUpdates[0] == "") || (len(AllowedUpdates) == 0) {
@@ -86,7 +86,7 @@ func init() {
 	}
 
 	// if valid lang codes is not set, set it to 'en' only
-	if (len(ValidLangCodes) == 1 && ValidLangCodes[0] == "") || (len(ValidLangCodes) == 0) {
+	if (len(ValidLangCodes) == 1 && ValidLangCodes[0] == "en") || (len(ValidLangCodes) == 0) {
 		ValidLangCodes = []string{"en"}
 	}
 
